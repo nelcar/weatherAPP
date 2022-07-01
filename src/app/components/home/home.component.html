@@ -1,0 +1,42 @@
+<div class="container m-3">
+    <div class="col-12 text-right">
+        <p>** Ciudades: London, UK</p>
+    </div>
+    <div class="">
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <input [(ngModel)]="searchText" name= "searchText" id="searchText" type="text" class="form-control" placeholder="Ingrese Ciudad" >
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-success" type="button" (click)="myLocation()">Usar mi ubicación</button>
+            </div>
+            <div class="col-auto">
+               <button class="btn btn-primary" type="button" (click)="searchWeather()">Buscar</button>
+            </div>
+          </div>
+    </div>
+</div>
+
+<div *ngIf="showSearch">
+    <div class="container m-3">
+        <p><span class="bold">Región:</span> {{weatherArray[0]}}</p>
+        
+        <div class="m-3">
+            <div class="row">
+                <div *ngFor="let item of weatherArray[2]" class="col">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h5>{{item.day}}</h5>
+                        </div>
+                        
+                        <div class="card-body">
+                          <img [src]="item.iconURL" class="card-img-top" [alt]="item.day">
+                          <p class="card-text small-font">Min: {{item.min_temp.c}} Max: {{item.max_temp.c}}</p>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
